@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧪 Testing API - Pilotos F1</title>
+  <meta name="author" content="Talia">
+  <meta name="description" content="Simulador de API para probar métodos HTTP con Postman. Registra y gestiona pilotos de Fórmula 1.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./imag/Minecraft_Folder_23366.ico" type="image/x-icon">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏎️ API Simulator - Pilotos de Fórmula 1</h1>
+            <p>Prueba todos los métodos HTTP con Postman</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>📝 Formulario de Piloto</h2>
+                <form id="pilotForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="id">ID del Piloto:</label>
+                        <input type="number" id="id" name="id" min="1" placeholder="Ej: 1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej: Lewis Hamilton">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="equipo">Equipo:</label>
+                        <select id="equipo" name="equipo">
+                            <option value="">Selecciona un equipo</option>
+                            <option value="Red Bull Racing">Red Bull Racing</option>
+                            <option value="Mercedes">Mercedes</option>
+                            <option value="Ferrari">Ferrari</option>
+                            <option value="McLaren">McLaren</option>
+                            <option value="Alpine">Alpine</option>
+                            <option value="Aston Martin">Aston Martin</option>
+                            <option value="Williams">Williams</option>
+                            <option value="AlphaTauri">AlphaTauri</option>
+                            <option value="Alfa Romeo">Alfa Romeo</option>
+                            <option value="Haas">Haas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nacionalidad">Nacionalidad:</label>
+                        <input type="text" id="nacionalidad" name="nacionalidad" placeholder="Ej: Británica">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" min="18" max="50" placeholder="Ej: 28">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="victorias">Victorias:</label>
+                        <input type="number" id="victorias" name="victorias" min="0" placeholder="Ej: 7">
+                    </div>
+                </form>
+
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Enviar</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏁 Pilotos Registrados</h2>
+                <div id="pilotsContainer" class="pilots-grid">
+                    <!-- Los pilotos se mostrarán aquí -->
+                </div>
+            </div>
+
+            <div class="response-section">
+                <h2>📡 Información para Postman</h2>
+                <div id="responseContainer">
+                    <div class="response-code">
+                        {
+                            "message": "Usa esta aplicación como servidor local y prueba los endpoints con Postman",
+                            "server": "Aplicación lista para pruebas",
+                            "note": "Los datos se almacenan en memoria durante la sesión"
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="endpoints">
+                <h3>🔗 Endpoints para Postman</h3>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <code>http://localhost:3000/api/pilots</code>
+                    <p>Obtiene todos los pilotos</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <code>http://localhost:3000/api/pilots/:id</code>
+                    <p>Obtiene un piloto específico por ID</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <code>http://localhost:3000/api/pilots</code>
+                    <p>Crea un nuevo piloto (envía JSON en el body)</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method put">PUT</span>
+                    <code>http://localhost:3000/api/pilots/:id</code>
+                    <p>Actualiza un piloto existente (envía JSON en el body)</p>
+                </div>
+                <div class="endpoint">
+                    <span class="method delete">DELETE</span>
+                    <code>http://localhost:3000/api/pilots/:id</code>
+                    <p>Elimina un piloto</p>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 8px; border-left: 4px solid #ffc107;">
+                    <h4>📋 Ejemplo de JSON para POST/PUT:</h4>
+                    <pre style="background: #f8f9fa; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 12px;">{
+  "nombre": "Fernando Alonso",
+  "equipo": "Aston Martin", 
+  "nacionalidad": "Española",
+  "edad": 42,
+  "victorias": 32
+}</pre>
+                </div>
+
+                <div style="margin-top: 15px; padding: 15px; background: #d1ecf1; border-radius: 8px; border-left: 4px solid #17a2b8;">
+                    <h4>⚙️ Configuración de Headers en Postman:</h4>
+                    <p><strong>Content-Type:</strong> application/json</p>
+                    <p><strong>Accept:</strong> application/json</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./app.js"> </script>
+</body>
+</html>
